@@ -9,4 +9,7 @@
                 :asset-path "."
                 :target :browser
                 :modules {:main {:init-fn app.main/main!}}
-                :devtools {:after-load app.main/reload!}}}}
+                :devtools {:after-load app.main/reload!}}}
+ :release {:output-dir "dist/"
+           :module-hash-names 8
+           :build-options {:manifest-name "assets.edn"}}}}}
