@@ -1,6 +1,9 @@
 
 {:source-paths ["src"]
- :dependencies []
+ :dependencies [[cider/cider-nrepl "0.21.0"]
+                [reagent "0.8.1"]
+                [re-frame "0.10.5"]]
+ 
  :dev-http {8080 "target/"}
  :builds {:app {:output-dir "target/"
                 :asset-path "."
