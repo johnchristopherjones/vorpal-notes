@@ -1,14 +1,17 @@
-
 (ns app.main
-  (:require [app.lib :as lib]))
+  (:require [reagent.core :as reagent]
+            [re-frame.core :as rf]
+            [clojure.string :as str]
+            [app.containers.root]))
 
-(def a 1)
-
-(defonce b 2)
+(defn init! []
+  (reagent/render [app.containers.root/root]
+                  (js/document.getElementById "app")))
 
 (defn main! []
-  (println "[main]: loading"))
+  (println "[main]: loading")
+  (init!))
 
 (defn reload! []
-  (println "[main] reloaded lib:" lib/c lib/d)
-  (println "[main] reloaded:" a b))
+  (println "[main] reloading")
+  (init!))

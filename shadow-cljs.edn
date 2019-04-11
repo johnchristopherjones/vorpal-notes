@@ -1,5 +1,5 @@
 
-{:source-paths ["src"]
+{:source-paths ["src" "assets"]
  :dependencies [[cider/cider-nrepl "0.21.0"]
                 [reagent "0.8.1"]
                 [re-frame "0.10.5"]]
