@@ -1,4 +1,5 @@
 
+/dist
 /target
 /node_modules
 /yarn.lock
@@ -7,3 +8,5 @@
 .shadow-cljs/
 
 .nrepl-port
+
+.env

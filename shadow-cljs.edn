@@ -1,4 +1,3 @@
-
 {:source-paths ["src" "assets"]
  :dependencies [[cider/cider-nrepl "0.21.0"]
                 [reagent "0.8.1"]
@@ -12,4 +11,4 @@
                 :devtools {:after-load app.main/reload!}}}
  :release {:output-dir "dist/"
            :module-hash-names 8
-           :build-options {:manifest-name "assets.edn"}}}}}
+           :build-options {:manifest-name "assets.edn"}}}
