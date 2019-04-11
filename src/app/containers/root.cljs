@@ -7,8 +7,8 @@
             [app.components.composite.mdc-card :refer [card]]))
 
 (defn root []
-  [:div.mdc-typography
-   [:link {:rel "stylesheet" :href "/css/main.css"}]
+  [:<>
+   [:link {:rel "stylesheet" :href "css/main.css"}]
    [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/icon?family=Material+Icons"}]
    [:div#header "header"]
    [:div#sidebar "sidebar"]

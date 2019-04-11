@@ -6,7 +6,11 @@
   "scripts": {
     "watch": "shadow-cljs watch app",
     "compile": "shadow-cljs compile app",
+    "prerelease": "rm -r dist/*",
     "release": "shadow-cljs release app",
+    "release:html": "cp assets/index.html dist/",
+    "release:style": "sass -I node_modules assets/css:dist/css",
+    "postrelease": "yarn release:html && yarn release:style",
     "html": "mkdir -p target && cp assets/index.html target/",
     "serve": "yarn html && http-server target/",
     "del": "rm -r target/*",
