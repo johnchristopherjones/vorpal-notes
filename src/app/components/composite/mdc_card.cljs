@@ -32,8 +32,8 @@
 (defn card
   "Material Design Card component"
   [options card-content & {:keys [title subtitle]}]
-   [:div.mdc-card options
-    [:div.mdc-card__primary-action {:tabindex 0}
+   [:article.mdc-card options
+    [:header.mdc-card__primary-action {:tabindex 0}
      (when title [headline6 title])
      (when subtitle [subtitle2 subtitle])]
     [card-primary-content card-content]])

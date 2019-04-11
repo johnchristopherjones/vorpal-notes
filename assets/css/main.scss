@@ -1,6 +1,6 @@
-/**
- * Meyer's CSS Reset
-**/
+//
+// Meyer's CSS Reset
+//
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -22,76 +22,91 @@ time, mark, audio, video {
 	vertical-align: baseline;
 }
 
+//
+// Material CSS
+//
+@import "@material/card/mdc-card";
+@import "@material/elevation/mdc-elevation";
+@import "@material/typography/mdc-typography";
+
+$desktop-color: #e2e1e0;
+$gap-width: 16px;
 
 body {
-  background: #e2e1e0;
+  background: $desktop-color;
 }
 
 
-/**
- * Grid layouts
-**/
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 320px);
-  grid-auto-rows: 64px;
-  grid-auto-flow: dense;
-  align-items: center;
-  justify-items: center;
-  grid-gap: 16px;
-
-}
-
-.grid-item {
+//
+// Main app layout
+//
+body {
+  height: 100vh;
+  width: 100vw;
   overflow: hidden;
+
   display: grid;
-  grid-template-columns: 1;
-  grid-template-rows: 1;
-  width: 320px;
-  height: 64px;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 56px 1fr 48px;
+  grid-template-areas:
+    "header header header header header"
+    "main    main   main   main   main"
+    "main    main   main   main   main";
+}
+#app { display: contents; }
+#app > header { grid-area: header; }
+#app > main { grid-area: main; }
+#app > aside {
+  position: absolute;
+  top: 56px;
+  bottom: 0px;
+  right: 0px;
+  width: 40rem;
+}
+#app main {
+  overflow-y: scroll;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(256px, 1fr));
+  grid-auto-rows: 96px;
+  grid-auto-flow: dense;
+  grid-gap: $gap-width;
+  padding: $gap-width;
 }
 
-.grid-item .note {
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
-  // width: 100%;
-  // height: 100%;
-  // object-fit: cover;
+//
+// Elevation and transitions
+//
+#app > header {
+  @include mdc-elevation(4);
 }
-
-.grid-item.expanded {
-  grid-row: span 3;
-  background-color: gold;
+#app > nav {
+  @include mdc-elevation(0);
 }
-
-.grid-item {
-  background: #fff;
-  border-radius: 2px;
-  display: inline-block;
-  // height: 300px;
-  position: relative;
-  z-index: 200;
+#app > aside {
+  @include mdc-elevation(2);
+  transform: translateX(100%);
+  transition: mdc-elevation-transition-value(), transform $mdc-elevation-transition-duration $mdc-elevation-transition-timing-function;
 }
-
-
-@import "@material/card/mdc-card";
-.grid-item {
-  padding: 16px;
-  box-sizing: border-box;
+#app > aside.opened {
+  transform: translateY(0%);
 }
-
-@import "@material/elevation/mdc-elevation";
-
-.grid-item {
+.main-item {
+  @include mdc-elevation(2);
+}
+.main-item:hover {
+  @include mdc-elevation(8);
+}
+.main-item {
   transition: mdc-elevation-transition-value(), opacity $mdc-elevation-transition-duration $mdc-elevation-transition-timing-function;
   will-change: $mdc-elevation-property, opacity;
 }
-.grid-item {
-  @include mdc-elevation(2);
-}
-.grid-item:hover {
-  @include mdc-elevation(8);
+
+
+//
+// Grid item expansion
+//
+.expanded {
+  grid-row: span 3;
+  background-color: whitesmoke;
 }
 
-@import "@material/typography/mdc-typography";

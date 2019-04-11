@@ -10,8 +10,8 @@
   [:<>
    [:link {:rel "stylesheet" :href "css/main.css"}]
    [:link {:rel "stylesheet" :href "https://fonts.googleapis.com/icon?family=Material+Icons"}]
-   [:div#header "header"]
-   [:div#sidebar "sidebar"]
-   (into [grid [note "Big"]]
-         (repeat 20 [note "Repeated"]))
-   [:div#footer "footer"]])
+   [:header "Vorpal Notes"]
+   [:aside]
+   [:main
+    (map (fn [i] [note {:class "mdc-card main-item"} (str "Note " i)])
+         (range 10))]])
