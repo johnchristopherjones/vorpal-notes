@@ -10,7 +10,7 @@
   (str/join " " (filter identity names)))
 
 
-;; More exact than (cs) but less efficient
+; `cs` but with clean whitespace
 #_(defn join-classes [& classes]
   "Combine space-delimited lists of classes."
   (->> classes
